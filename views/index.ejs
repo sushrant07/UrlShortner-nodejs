@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>URL Shortner</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <style></style>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <h1 class="mt-2 text-center">URL Shortner App by NodeJS</h1>
+    <form class="mt-5 container" action="/short" method="post">
+      <input
+        name="fullUrl"
+        placeholder="Your URL Here..."
+        type="text"
+        class="form-control"
+      />
+      <center>
+        <button type="submit" class="mt-2 btn btn-danger">Short it</button>
+      </center>
+    </form>
+    <div class="container">
+      <table class="table table-striped mt-5 text-center">
+        <thead>
+          <tr>
+            <th>Full URL</th>
+            <th>Short URL</th>
+            <th>Clicks</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% shortUrls.forEach(short=>{ %>
+          <tr>
+            <td><a href="<%= short.full%>"><%= short.full%></a></td>
+            <td>
+              <a href="/<%= short.short%>" target="_blank"><%= short.short%></a>
+            </td>
+            <td><%= short.clicks%></td>
+          </tr>
+          <%})%>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
